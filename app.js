@@ -2,28 +2,9 @@ var Nightmare = require('nightmare');
 var vo = require('vo');
 var config = require('./config.json');
 
+
 vo(function* () {
   var nightmare = Nightmare({ show: true });
-  var link = yield nightmare
-	  .goto('https://vu.sfc.keio.ac.jp/sfc-sfs/')
-		.type('input[name="u_login"]', config.account)
-    .type('input[name="u_pass"]', config.password)
-		.click('input[type="submit"]')
-		.wait(1000)
-    .click('.navi01 a')
-    .wait(5000)
-	yield nightmare.end();
-})(function (err, result) {
-  if (err) return console.log(err);
-  console.log(result);
-});
-
-
-var Nightmare = require('nightmare');
-var vo = require('vo');
-
-vo(function* () {
-  var nightmare = Nightmare({ show: false });
   var classes = yield nightmare
     .goto('https://vu.sfc.keio.ac.jp/sfc-sfs/')
     .type('input[name="u_login"]', config.account)
